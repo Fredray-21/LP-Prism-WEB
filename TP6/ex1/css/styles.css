@@ -1,0 +1,215 @@
+
+:root{
+  --primary-color: #ff4d4d;
+  --secondary-color-red: #ff9494;
+  --secondary-color: #ffe3e1;
+  --tertiary-color: #fff5e4;
+}
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Josefin Sans", sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--tertiary-color);
+}
+.ligne {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  margin: 2px 0 2px 0;
+  padding: 10px;
+}
+
+nav {
+  padding: 1em;
+  background-color: var(--secondary-color);
+  font-size: 1.2em;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#navigation {
+  background-color: var(--secondary-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#navigation .dropbtn{
+  background-color: var(--secondary-color);
+  color: black;
+  padding: 20px;
+  font-size: 1.4em;
+  border: none;
+  cursor: pointer;
+  min-width: 250px;
+
+  /* add animation background color */
+  
+
+}
+
+#results {
+  padding: 5em 0 2em 0;
+  font-size: 1.2em;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#results .ligne:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+#results .ligne:nth-child(even) {
+  background-color: #e6e6e6;
+}
+
+.bouton {
+  background-color: var(--secondary-color-red);
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.bouton:hover {
+  background-color: var(--primary-color);
+  animation: pulse 0.5s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  animation: pulse 0.5s;
+}
+
+/* .dropdown-content a:nth-child(odd) {
+  background-color: var(--tertiary-color);
+}
+.dropdown-content a:nth-child(even) {
+  background-color: var(--secondary-color);
+} */
+
+.dropdown-content a:hover {
+  background-color: var(--secondary-color-red);
+  color: white;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  animation: fadein 0.6s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* formulaire */
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  margin: 2px 0 2px 0;
+  padding: 10px;
+}
+
+.formulaire label{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2em 0 2px 0;
+}
+
+.formulaire input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.formulaire input:focus {
+  border: 2px solid var(--primary-color);
+}
+
+.formulaire button[type=submit] {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.formulaire button[type=submit]:hover {
+  animation: pulse 0.5s;
+}

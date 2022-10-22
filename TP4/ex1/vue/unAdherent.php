@@ -1,0 +1,3 @@
+<?php
+	$adherent->afficher();
+?>

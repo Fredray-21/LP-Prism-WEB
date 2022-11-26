@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="webdev.iut-orsay.fr" id="e26b2847-048a-4dda-8375-82a4b09f92cb" port="6022" nameFormat="DESCRIPTIVE" username="fdabadi" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="55118adb-da41-4ce8-a9ad-906d430754c8" name="WebDev">
+        <fileTransfer rootFolder="/home/fdabadi/public_html/LP/TP" accessType="SFTP" host="webdev.iut-orsay.fr" port="6022" sshConfigId="e26b2847-048a-4dda-8375-82a4b09f92cb" sshConfig="fdabadi@webdev.iut-orsay.fr:6022 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

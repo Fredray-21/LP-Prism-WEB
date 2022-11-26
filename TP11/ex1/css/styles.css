@@ -1,0 +1,289 @@
+:root {
+    --primary-red      : #ff4d4d;
+    --secondary-red    : #ff9494;
+    --primary-green    : #40d140;
+    --secondary-green  : #5fe35f;
+    --primary-blue     : #4d4dff;
+    --secondary-blue   : #9494ff;
+    --primary-rose     : #ff4dff;
+    --secondary-rose   : #ff94ff;
+    --primary-orange   : #ff8c4d;
+    --secondary-orange : #ffbf94;
+
+    --secondary-color  : #ffe3e1;
+    --tertiary-color   : #fff5e4;
+}
+
+html {
+    margin      : 0;
+    padding     : 0;
+    font-family : "Josefin Sans", sans-serif;
+    height      : 100vh;
+}
+
+body {
+    margin           : 0;
+    padding          : 0;
+    background-color : var(--tertiary-color);
+}
+
+.ligne {
+    display         : flex;
+    flex-direction  : row;
+    justify-content : space-between;
+    align-items     : center;
+    width           : 50%;
+    margin          : 2px 0 2px 0;
+    padding         : 10px;
+}
+
+nav {
+    padding          : 1em;
+    background-color : var(--secondary-color);
+    font-size        : 1.2em;
+    color            : black;
+    display          : flex;
+    flex-direction   : row;
+    justify-content  : space-around;
+    align-items      : center;
+}
+
+#navigation {
+    background-color : var(--secondary-color);
+    position         : fixed;
+    top              : 0;
+    left             : 0;
+    width            : 100%;
+    display          : flex;
+    justify-content  : center;
+    align-items      : center;
+}
+
+#navigation .dropbtn {
+    background-color : var(--secondary-color);
+    color            : black;
+    padding          : 20px;
+    font-size        : 1.4em;
+    border           : none;
+    cursor           : pointer;
+    min-width        : 250px;
+}
+
+#results {
+    padding         : 5em 0 2em 0;
+    font-size       : 1.2em;
+    color           : black;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : space-around;
+    align-items     : center;
+}
+
+#results .ligne:nth-child(odd) {
+    background-color : #f2f2f2;
+}
+
+#results .ligne:nth-child(even) {
+    background-color : #e6e6e6;
+}
+
+.bouton {
+    border          : none;
+    color           : white;
+    font-weight     : bold;
+    padding         : 15px 32px;
+    border-radius   : 10px;
+    text-align      : center;
+    text-decoration : none;
+    display         : inline-block;
+    font-size       : 20px;
+    cursor          : pointer;
+}
+
+.btn-red {
+    background-color : var(--secondary-red);
+}
+
+.btn-red:hover {
+    background-color : var(--primary-red);
+}
+
+.btn-green {
+    background-color : var(--secondary-green);
+}
+
+.btn-green:hover {
+    background-color : var(--primary-green);
+}
+
+.btn-blue {
+    background-color : var(--secondary-blue);
+}
+
+.btn-blue:hover {
+    background-color : var(--primary-blue);
+}
+
+.btn-rose {
+    background-color : var(--secondary-rose);
+}
+
+.btn-rose:hover {
+    background-color : var(--primary-rose);
+}
+
+.btn-orange {
+    background-color : var(--secondary-orange);
+    margin-right     : 1em;
+}
+
+.btn-orange:hover {
+    background-color : var(--primary-orange);
+}
+
+.bouton:hover {
+    animation : pulse 0.5s;
+}
+
+@keyframes pulse {
+    0% {
+        transform : scale(1);
+    }
+    50% {
+        transform : scale(1.1);
+    }
+    100% {
+        transform : scale(1);
+    }
+}
+
+/* dropdown */
+.dropdown {
+    position : relative;
+    display  : inline-block;
+}
+
+.dropdown-content {
+    display          : none;
+    position         : absolute;
+    background-color : #f9f9f9;
+    min-width        : 250px;
+    box-shadow       : 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index          : 1;
+}
+
+.dropbtn:hover {
+    background-color : #f9f9f9;
+}
+
+.dropdown-content a {
+    color           : black;
+    padding         : 12px 16px;
+    text-decoration : none;
+    display         : block;
+}
+
+.dropdown-content a:hover {
+    animation : pulse 0.5s;
+}
+
+/* .dropdown-content a:nth-child(odd) {
+  background-color: var(--tertiary-color);
+}
+.dropdown-content a:nth-child(even) {
+  background-color: var(--secondary-color);
+} */
+
+.dropdown-content a:hover {
+    background-color : var(--secondary-color);
+}
+
+.dropdown:hover .dropdown-content {
+    display   : block;
+    animation : fadein 0.6s;
+}
+
+@keyframes fadein {
+    from {
+        opacity : 0;
+    }
+    to {
+        opacity : 1;
+    }
+}
+
+/* formulaire */
+.formulaire {
+    display          : flex;
+    flex-direction   : column;
+    justify-content  : space-around;
+    align-items      : left;
+    width            : 30%;
+    margin           : 2px 0 2px 0;
+    padding          : 20px;
+
+    border-radius    : 10px;
+    background-color : var(--secondary-color);
+    border           : 1px solid var(--secondary-rose);
+
+}
+
+.formulaire label {
+    display         : flex;
+    flex-direction  : column;
+    justify-content : space-around;
+    align-items     : center;
+}
+
+.formulaire input, .formulaire select {
+    width              : 50%;
+    padding            : 12px 20px;
+    margin             : 8px 0;
+    box-sizing         : border-box;
+    border             : 2px solid #ccc;
+    -webkit-transition : 0.5s;
+    transition         : 0.5s;
+    outline            : none;
+}
+
+.formulaire input:focus {
+    border : 2px solid var(--primary-red);
+}
+
+.formulaire button[type="submit"] {
+    background-color : var(--secondary-green);
+    border           : none;
+    color            : white;
+    font-weight      : bold;
+    padding          : 15px 32px;
+    text-align       : center;
+    text-decoration  : none;
+    display          : inline-block;
+    font-size        : 16px;
+    cursor           : pointer;
+}
+
+.formulaire button[type="submit"]:hover {
+    background-color : var(--primary-green);
+    animation        : pulse 0.5s;
+}
+
+
+.row-form {
+    display         : flex;
+    flex-direction  : row;
+    justify-content : space-between;
+    align-items     : center;
+    width           : 100%;
+    margin          : 2px 0 2px 0;
+}
+
+
+#container-connexion {
+    display         : flex;
+    flex-direction  : row;
+    justify-content : space-around;
+    align-items     : center;
+    width           : 100vw;
+    height          : 100vh;
+}

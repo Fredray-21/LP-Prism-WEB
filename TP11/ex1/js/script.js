@@ -29,5 +29,5 @@ const listeObjets = document.querySelectorAll("#results .ligne");
 
 // add animation fade in in différente vitesse
 for (let i = 0; i < listeObjets.length; i++) {
-    listeObjets[i].style.animation = "fadein 1s " + (i / 5) + "s forwards";
+    listeObjets[i].style.animation = "fadein 1s " + (i / 10) + "s forwards";
 }

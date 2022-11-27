@@ -17,6 +17,43 @@
     --tertiary-color   : #fff5e4;
 }
 
+::-moz-selection {
+    color      : #fff;
+    background : var(--primary-orange);
+}
+
+::selection {
+    color      : #fff;
+    background : var(--primary-orange);
+}
+
+/* Designing for scroll-bar */
+::-webkit-scrollbar {
+    display : none;
+}
+
+
+.progress-container {
+    width            : 100%;
+    background-color : transparent;
+    height           : 8px;
+    display          : block;
+    z-index          : 5;
+    position         : fixed;
+    top              : 8vh;
+    left             : 0;
+
+
+}
+
+.progress-bar {
+    background : linear-gradient(90deg, var(--primary-orange), var(--primary-red));
+    width      : 0%;
+    display    : block;
+    height     : inherit;
+}
+
+
 html {
     margin      : 0;
     padding     : 0;
@@ -55,6 +92,7 @@ nav {
 
 #navigation {
     background-color : var(--secondary-color);
+    height           : 8vh;
     position         : fixed;
     top              : 0;
     left             : 0;
@@ -62,7 +100,7 @@ nav {
     display          : flex;
     justify-content  : center;
     align-items      : center;
-    z-index          : 50;
+    z-index          : 5;
 }
 
 #navigation .dropbtn {
@@ -73,10 +111,11 @@ nav {
     border           : none;
     cursor           : pointer;
     min-width        : 250px;
+    height           : 8vh;
 }
 
 #results {
-    padding         : 5em 0 2em 0;
+    padding         : 8vh 0 2em 0;
     font-size       : 1.2em;
     color           : black;
     display         : flex;
@@ -167,6 +206,7 @@ nav {
 .dropdown {
     position : relative;
     display  : inline-block;
+    z-index  : 8;
 }
 
 .dropdown-content {
@@ -175,7 +215,7 @@ nav {
     background-color : #f9f9f9;
     min-width        : 250px;
     box-shadow       : 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index          : 1;
+    z-index          : 8;
 }
 
 .dropbtn:hover {
@@ -218,7 +258,7 @@ nav {
     justify-content  : space-around;
     align-items      : flex-start;
     width            : 30%;
-    margin           : 2px 0 2px 0;
+    margin           : 8vh 0 2px 0;
     padding          : 20px;
     border-radius    : 10px;
     background-color : var(--secondary-color);
@@ -321,7 +361,7 @@ nav {
 .modal {
     display     : none; /* Hidden by default */
     position    : fixed; /* Stay in place */
-    z-index     : 1; /* Sit on top */
+    z-index     : 10; /* Sit on top */
     left        : 0;
     top         : 0;
     width       : 100%; /* Full width */
@@ -329,7 +369,6 @@ nav {
     overflow    : auto; /* Enable scroll if needed */
     padding-top : 50px;
     background  : rgba(0, 0, 0, 0.7);
-    z-index     : 100;
 }
 
 /*key frame fade up*/

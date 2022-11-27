@@ -52,8 +52,10 @@ class ControleurObjet
                 $lienDefinir = "";
 
                 if (static::$objet != "DateEmprunt") {
+                    $cle = static::$cle;
+                    $objet = static::$objet;
                     $lienModification = "<a class='bouton btn-blue' href=\"index.php?controleur=controleur" . static::$objet . "&action=afficherFormulaireModificationObjet&" . static::$cle . "=$numObjet\"><i class='bi bi-pen'></i></a>";
-                    $lienSuppression = "<a class='bouton btn-red' href=\"index.php?controleur=controleur" . static::$objet . "&action=supprimerObjet&" . static::$cle . "=$numObjet\"><i class='bi bi-trash'></i> </a>";
+                    $lienSuppression = "<button class='bouton btn-red' onclick=\"openModal('$objet', '$numObjet', '$cle')\"><i class='bi bi-trash'></i></button>";
                 }
                 if (static::$objet == "Livre") {
                     $lienDefinir = "<a class='bouton btn-orange' href=\"index.php?controleur=controleur" . static::$objet . "&action=definirAuteurs&" . static::$cle . "=$numObjet\"><i class='bi bi-pencil-square'></i></a>";

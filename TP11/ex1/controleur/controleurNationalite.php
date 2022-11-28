@@ -31,19 +31,4 @@ class ControleurNationalite extends ControleurObjet
         include("vue/fin.html");
     }
 
-    public static function modifierNationalite()
-    {
-        $titre = "Modification d'une Nationalite";
-        $tableau[] = $_GET["identifiant"];
-        $tableau[] = $_GET["pays"];
-        $tableau[] = $_GET["abrege"];
-
-        $result = Nationalite::updateNationalite($tableau[0], $tableau[1], $tableau[2]);
-
-        if ($result) {
-            self::lireObjets();
-        } else {
-            self::afficherFormulaireModificationObjet();
-        }
-    }
 }

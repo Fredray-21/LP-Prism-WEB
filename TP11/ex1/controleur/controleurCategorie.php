@@ -32,19 +32,4 @@ class ControleurCategorie extends ControleurObjet
         include("vue/fin.html");
     }
 
-    public static function modifierCategorie()
-    {
-        $titre = "Modification d'une Categorie";
-        $tableau[] = $_GET["identifiant"];
-        $tableau[] = $_GET["libelle"];
-        $tableau[] = $_GET["nbLivresAutorises"];
-
-        $result = Categorie::updateCategorie($tableau[0], $tableau[1], $tableau[2]);
-
-        if ($result) {
-            self::lireObjets();
-        } else {
-            header("Location: index.php?controleur=ControleurCategorie&action=afficherFormulaireModificationObjet&numCategorie=" . $tableau[0]);
-        }
-    }
 }

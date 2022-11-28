@@ -30,19 +30,4 @@ class ControleurGenre extends ControleurObjet
         include("vue/fin.html");
     }
 
-
-    public static function modifierGenre()
-    {
-        $titre = "Modification d'un Genre";
-        $tableau[] = $_GET["identifiant"];
-        $tableau[] = $_GET["intitule"];
-
-        $result = Genre::updateGenre($tableau[0], $tableau[1]);
-
-        if ($result) {
-            self::lireObjets();
-        } else {
-            self::afficherFormulaireModificationObjet();
-        }
-    }
 }

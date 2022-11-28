@@ -34,24 +34,6 @@ class ControleurLivre extends ControleurObjet
         include("vue/fin.html");
     }
 
-    public static function modifierLivre()
-    {
-        $titre = "Modification d'un Livre";
-        $tableau[] = $_GET["identifiant"];
-        $tableau[] = $_GET["titre"];
-        $tableau[] = $_GET["anneeParution"];
-        $tableau[] = $_GET["numGenre"];
-
-        $result = Livre::updateLivre($tableau[0], $tableau[1], $tableau[2], $tableau[3]);
-
-        if ($result) {
-            self::lireObjets();
-        } else {
-            self::afficherFormulaireModificationObjet();
-        }
-    }
-
-
     public static function ajouterAuteurDuLivre()
     {
         $titre = "Ajout d'un auteur au livre";

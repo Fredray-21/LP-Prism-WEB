@@ -1,14 +1,16 @@
 <?php
-class Genre  extends Objet
+
+class Genre extends Objet
 {
     protected $numGenre;
     protected $intitule;
-	protected static $objet = "Genre";
-	protected static $cle = "numGenre";
+    protected static $objet = "Genre";
+    protected static $cle = "numGenre";
 
+    // method afficher
     public function afficher()
     {
-        echo "<p class='ligne'>genre $this->intitule</p>";
+        return "$this->intitule";
     }
 
     public static function addGenre($intitule)
@@ -27,19 +29,19 @@ class Genre  extends Objet
 
 
     public static function updateGenre($id, $intitule)
-	{
-		$req = "UPDATE Genre SET intitule = :intitule_tag WHERE numGenre = :id_tag";
-		$rep = Connexion::pdo()->prepare($req);
-		$rep->bindParam(':intitule_tag', $intitule);
-		$rep->bindParam(':id_tag', $id);
+    {
+        $req = "UPDATE Genre SET intitule = :intitule_tag WHERE numGenre = :id_tag";
+        $rep = Connexion::pdo()->prepare($req);
+        $rep->bindParam(':intitule_tag', $intitule);
+        $rep->bindParam(':id_tag', $id);
 
-		try {
-			$rep->execute();
-			return true;
-		} catch (PDOException $e) {
-			echo "Erreur : " . $e->getMessage();
-			return false;
-		}
-	}
+        try {
+            $rep->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
+            return false;
+        }
+    }
 
 }

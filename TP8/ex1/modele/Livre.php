@@ -12,7 +12,7 @@ class Livre extends Objet
     // method afficher
     public function afficher()
     {
-        echo "<p class='ligne'>Livre $this->titre, paru en $this->anneeParution </p>";
+        return "$this->titre, paru en $this->anneeParution";
     }
 
     public static function addLivre($titre, $anneeParution, $numGenre)

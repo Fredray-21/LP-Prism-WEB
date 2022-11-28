@@ -1,4 +1,5 @@
 <?php
+
 class Categorie extends Objet
 {
     protected $numCategorie;
@@ -8,9 +9,10 @@ class Categorie extends Objet
     protected static $cle = "numCategorie";
 
 
+    // method afficher
     public function afficher()
     {
-        echo "<p class='ligne'>Categorie $this->libelle nbLivreAutorises: $this->nbLivresAutorises </p>";
+        return "$this->libelle nbLivreAutorises: $this->nbLivresAutorises";
     }
 
     public static function addCategorie($libelle, $nbLivreAuthorises)

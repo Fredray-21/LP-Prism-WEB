@@ -1,4 +1,5 @@
 <?php
+
 class Nationalite extends Objet
 {
     protected $numNationalite;
@@ -8,9 +9,10 @@ class Nationalite extends Objet
     protected static $cle = "numNationalite";
 
 
+    // method afficher
     public function afficher()
     {
-        echo "<p class='ligne'>Nationalite $this->pays abrege: $this->abrege </p>";
+        return "$this->pays abrege: $this->abrege";
     }
 
     public static function addNationalite($pays, $abrege)
@@ -43,7 +45,6 @@ class Nationalite extends Objet
             return false;
         }
     }
-
 
 
 }

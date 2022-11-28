@@ -75,8 +75,9 @@ class ControleurObjet
         $titre = "détails " . strtolower(static::$objet);
         $numObjet = $_GET[static::$cle];
         $objet = static::$objet::getObjetById($numObjet);
+        $objetData = $objet->afficher();
         $tableauAffichage = array();
-        $tableauAffichage[] = "<div class='ligne'><div><b>" . static::$objet . "</b> $numObjet</div></div>";
+        $tableauAffichage[] = "<div class='ligne'><div><b>" . static::$objet . "</b> $objetData</div></div>";
 
         include("vue/debut.php");
         include("vue/menu.html");

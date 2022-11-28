@@ -1,13 +1,15 @@
 <?php
+
 class DateEmprunt extends Objet
 {
     protected $numDateEmprunt;
     protected $dateEmprunt;
-	protected static $objet = "DateEmprunt";
-	protected static $cle = "numDateEmprunt";
+    protected static $objet = "DateEmprunt";
+    protected static $cle = "numDateEmprunt";
 
+    // method afficher
     public function afficher()
     {
-        echo "<p class='ligne'>DateEmprunt $this->dateEmprunt </p>";
+        return "$this->dateEmprunt";
     }
 }

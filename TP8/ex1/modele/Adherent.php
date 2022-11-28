@@ -1,5 +1,6 @@
 <?php
-class Adherent  extends Objet
+
+class Adherent extends Objet
 {
     protected $login;
     protected $mdp;
@@ -11,9 +12,10 @@ class Adherent  extends Objet
     protected static $objet = "Adherent";
     protected static $cle = "login";
 
+    // method afficher
     public function afficher()
     {
-        echo "<p class='ligne'>Adherent $this->nomAdherent $this->prenomAdherent $this->email $this->dateAdhesion $this->numCategorie </p>";
+        return "$this->nomAdherent $this->prenomAdherent $this->email $this->dateAdhesion $this->numCategorie";
     }
 
 

@@ -55,7 +55,7 @@ class ControleurAdherent extends ControleurObjet
         $tableau[] = $_GET["email"];
         $tableau[] = $_GET["numCategorie"];
 
-        $result = Adherent::updateAdherent($tableau[0], $tableau[1], $tableau[2], $tableau[3], $tableau[4], $tableau[5]);
+        $result = Client::updateAdherent($tableau[0], $tableau[1], $tableau[2], $tableau[3], $tableau[4], $tableau[5]);
 
         if ($result) {
             self::lireObjets();
@@ -77,8 +77,8 @@ class ControleurAdherent extends ControleurObjet
     {
         $login = $_GET["login"];
         $password = $_GET["password"];
-        $result = Adherent::checkMDP($login, $password);
-        $adherent = Adherent::getObjetById($login);
+        $result = Client::checkMDP($login, $password);
+        $adherent = Client::getObjetById($login);
         $validationEmail = "non";
         if ($adherent) {
             $validationEmail = $adherent->get("chaineValidationEmail");
@@ -128,7 +128,7 @@ class ControleurAdherent extends ControleurObjet
         ];
         mail($destinataire, $sujet, $message, implode("\r\n", $entete));
 
-        Adherent::addAdherent($login, $password,  $nom, $prenom, $email, 1, $ch);
+        Client::addAdherent($login, $password, $nom, $prenom, $email, 1, $ch);
 
         include("vue/debut.php");
         include("vue/notificationLienValidation.html");
@@ -140,7 +140,7 @@ class ControleurAdherent extends ControleurObjet
         $titre = "Validation d'un compte Adherent";
         $login = $_GET["login"];
         $ch = $_GET["chaineValidationEmail"];
-        $validationEmail = Adherent::validateAccount($login, $ch);
+        $validationEmail = Client::validateAccount($login, $ch);
         if ($validationEmail) {
             include("vue/debut.php");
             include("vue/compteValide.html");

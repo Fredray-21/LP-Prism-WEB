@@ -6,7 +6,7 @@ class ControleurAdherent
     public static function lireAdherents()
     {
         $titre = "Les Adherent";
-        $tableau = Adherent::getAllAdherent();
+        $tableau = Client::getAllAdherent();
         $tableauAffichage = [];
         foreach ($tableau as $unAdherent) {
             $loginAdherent = $unAdherent->getLogin();
@@ -29,7 +29,7 @@ class ControleurAdherent
     {
         $titre = "un Adherent";
         $login = $_GET["loginAdherent"];
-        $adherent = Adherent::getAdherentByLogin($login);
+        $adherent = Client::getAdherentByLogin($login);
         include("vue/debut.php");
         include("vue/menu.html");
         include("vue/unAdherent.php");

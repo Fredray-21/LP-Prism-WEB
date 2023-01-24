@@ -35,7 +35,7 @@ class ControleurAdherent extends ControleurObjet
         $tableau[] = $_GET["numCategorie"];
 
 
-        $result = Adherent::addAdherent($tableau[0], $tableau[1], $tableau[2], $tableau[3], $tableau[4], $tableau[5]);
+        $result = Client::addAdherent($tableau[0], $tableau[1], $tableau[2], $tableau[3], $tableau[4], $tableau[5]);
 
         if ($result) {
             header("Location: routeur.php?controleur=ControleurAdherent&action=lireObjets");
@@ -76,7 +76,7 @@ class ControleurAdherent extends ControleurObjet
         $tableau[] = $_GET["email"];
         $tableau[] = $_GET["numCategorie"];
 
-        $result = Adherent::updateAdherent($tableau[0], $tableau[1], $tableau[2], $tableau[3], $tableau[4], $tableau[5]);
+        $result = Client::updateAdherent($tableau[0], $tableau[1], $tableau[2], $tableau[3], $tableau[4], $tableau[5]);
 
         if ($result) {
             header("Location: routeur.php?controleur=ControleurAdherent&action=lireObjets");

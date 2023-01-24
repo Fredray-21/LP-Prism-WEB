@@ -13,7 +13,7 @@ class ControleurAdherent extends ControleurObjet
         "email" => ["text", "Email"],
         "numCategorie" => ["number", "Numéro de catégorie"],
     );
-    
+
     public static function afficherFormulaireCreationAdherent()
     {
         $titre = "Création d'un Adherent";
@@ -35,7 +35,7 @@ class ControleurAdherent extends ControleurObjet
         $tableau[] = $_GET["numCategorie"];
 
 
-        $result = Adherent::addAdherent($tableau[0], $tableau[1], $tableau[2], $tableau[3], $tableau[4], $tableau[5]);
+        $result = Client::addAdherent($tableau[0], $tableau[1], $tableau[2], $tableau[3], $tableau[4], $tableau[5]);
 
         if ($result) {
             header("Location: routeur.php?controleur=ControleurAdherent&action=lireObjets");

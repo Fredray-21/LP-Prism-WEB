@@ -1,0 +1,24 @@
+<div id="container-connexion">
+    <h2>Connexion</h2>
+
+
+    <form id="form-connexion" class="formulaire" action="index.php" method="get">
+        <input type="hidden" name="controleur" value="ControleurClient">
+        <input type="hidden" name="action" value="connecterClient">
+
+        <div class='row-form'>
+            <label for='login-cnx'>Email</label>
+            <input type='email' name='email_client' id='login-cnx' placeholder='Email' required>
+        </div>
+        <div class='row-form'>
+            <label for='password-cnx'>Mot de passe</label>
+            <input type='password' name='password' id='password-cnx' placeholder='Mot de passe' required>
+        </div>
+        <br>
+
+        <div>
+            <button type="submit">Se connecter</button>
+        </div>
+    </form>
+
+</div>

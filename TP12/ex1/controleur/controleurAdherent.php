@@ -92,7 +92,7 @@ class ControleurAdherent extends ControleurObjet
         ];
         //mail($destinataire, $sujet, $message, implode("\r\n", $entete));
 
-        Adherent::addObjet(
+        Client::addObjet(
             ["login" => $login,
                 "mdp" => $password,
                 "nomAdherent" => $nom,
@@ -114,7 +114,7 @@ class ControleurAdherent extends ControleurObjet
         $titre = "Validation d'un compte Adherent";
         $login = $_GET["login"];
         $ch = $_GET["chaineValidationEmail"];
-        $validationEmail = Adherent::validateAccount($login, $ch);
+        $validationEmail = Client::validateAccount($login, $ch);
         if ($validationEmail) {
             include("vue/debut.php");
             include("vue/compteValide.html");

@@ -13,29 +13,29 @@ require_once("controleur/controleurLivre.php");
 $action = "lireAuteurs";
 
 if (!empty($_GET["action"]) && !empty($_GET["controleur"]) && in_array($_GET["action"], get_class_methods($_GET["controleur"]))) {
-  $action = $_GET["action"];
+    $action = $_GET["action"];
 }
 
 switch ($action) {
-  case "lireAuteurs":
-    ControleurAuteur::$action();
-    break;
-  case "lireAuteur":
-    ControleurAuteur::$action();
-    break;
-  case "lireAdherents":
-    ControleurAdherent::$action();
-    break;
-  case "lireAdherent":
-    ControleurAdherent::$action();
-    break;
-  case "lireLivres":
-    ControleurLivre::$action();
-    break;
-  case "lireLivre":
-    ControleurLivre::$action();
-    break;
-  default:
-    ControleurAuteur::$action();
-    break;
+    case "lireAuteurs":
+        ControleurAuteur::$action();
+        break;
+    case "lireAuteur":
+        ControleurAuteur::$action();
+        break;
+    case "lireAdherents":
+        ControleurClient::$action();
+        break;
+    case "lireAdherent":
+        ControleurClient::$action();
+        break;
+    case "lireLivres":
+        ControleurLivre::$action();
+        break;
+    case "lireLivre":
+        ControleurLivre::$action();
+        break;
+    default:
+        ControleurAuteur::$action();
+        break;
 }

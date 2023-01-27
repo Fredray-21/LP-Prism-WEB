@@ -1,0 +1,112 @@
+body {
+    width   : 90%;
+    margin  : 1em auto 0 auto;
+    padding : 0px 20px 20px 20px;
+    border  : solid 2px grey;
+}
+
+body * {
+    font-family : Consolas;
+}
+
+#enregistrements, #listes {
+    display         : flex;
+    flex-direction  : row;
+    justify-content : flex-start;
+    margin-top      : 2em;
+}
+
+#ajoutAdherent, #ajoutLivre {
+    width          : 50%;
+    display        : flex;
+    flex-direction : column;
+}
+
+#ajoutLivre div, #ajoutAdherent div {
+    display         : flex;
+    justify-content : space-around;
+    margin-bottom   : 10px;
+}
+
+#ajoutLivre div input[type="text"], #ajoutAdherent div input[type="text"] {
+    width : 35%;
+}
+
+#ajoutLivre div input[type="button"], #ajoutAdherent div input[type="button"] {
+    width : 30%;
+}
+
+#adh, #dispos, #empr {
+    width : 33.3%;
+}
+
+#adh fieldset, #dispos fieldset, #empr fieldset {
+    min-height : 20em;
+}
+
+#boutons {
+    display         : flex;
+    flex-direction  : row;
+    justify-content : center;
+}
+
+#boutons > input {
+    width : 33%;
+}
+
+input[type="button"] {
+    cursor           : pointer;
+    background-color : #E1E1E1;
+    font-style       : normal;
+    font-weight      : normal;
+    color            : black;
+}
+
+legend {
+    font-size : 1.5em;
+}
+
+h2 {
+    font-size        : 2em;
+    color            : white;
+    background-color : grey;
+    border-radius    : 4px;
+    padding          : 10px;
+    box-shadow       : 4px 4px 4px black;
+    text-align       : center;
+}
+
+ul {
+    padding-left : 20px;
+}
+
+li {
+    cursor           : pointer;
+    background-color : white;
+    line-height      : 1.5em;
+}
+
+li:hover {
+    background-color : lightgrey;
+}
+
+input {
+    padding   : 5px;
+    font-size : 1.2em;
+}
+
+#adh fieldset #listeAdherents div {
+    display         : flex;
+    flex-direction  : row;
+    justify-content : space-between;
+    margin          : 5px 0px;
+}
+
+#adh fieldset #listeAdherents li {
+    width : 100%;
+}
+
+#adh fieldset #listeAdherents div button {
+    display : none;
+    cursor  : pointer;
+}

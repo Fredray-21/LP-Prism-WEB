@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendrier JS</title>
+    <meta charset="utf8">
+    <script type="text/javascript" src="fonctions.js"></script>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body onload="toutCreer();">
+<fieldset>
+    <legend>Calendrier javascript</legend>
+    <div id="affichage_heure" class="heure"></div>
+    <p class="texteC">choisissez le mois et l'année</p>
+    <select class="selM" id="selectM" onchange="mettreajourcalendrier();"></select>
+    <select class="selA" id="selectA" onchange="mettreajourcalendrier();"></select>
+    <p id="texteC" class="texteC"></p>
+    <input id="reculerY" type="button" class="btn" value="<<" onclick="reculer(12);"></input>
+    <input id="reculerM" type="button" class="btn" value="<" onclick="reculer(1);"></input>
+    <input id="avancerM" type="button" class="btn" value=">" onclick="avancer(1);"></input>
+    <input id="avancerY" type="button" class="btn" value=">>" onclick="avancer(12);"></input>
+    <div id="calendrier"></div>
+</fieldset>
+</body>
+</html>

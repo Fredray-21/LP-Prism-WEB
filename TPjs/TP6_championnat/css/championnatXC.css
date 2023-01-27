@@ -1,0 +1,78 @@
+body {
+	background-color: aliceblue;
+	/*background-image: url("../img/footballingoal.jpg");*/
+	background-image: url("../img/imageOM.jpeg");
+	background-repeat: no-repeat;
+}
+
+fieldset {
+	width:50%;
+	margin-left: 25%;
+	margin-top:30px;
+	padding:20px;
+	/*background-color: lightgreen;*/
+	background-color: lightblue;
+	font-size: 1.2em;
+	border-radius: 6px;
+	/*box-shadow: 12px 12px 12px darkgreen;*/
+	box-shadow: 12px 12px 12px darkblue;
+}
+
+legend {
+	font-size: 1.2em;
+	/*background-color: lightgreen;*/
+	background-color: lightblue;
+	border: solid 1px lightgrey;
+	border-radius: 4px;
+	padding: 4px;
+	/*box-shadow: 4px 4px 4px darkgreen;*/
+	box-shadow: 4px 4px 4px darkblue;
+}
+
+table {
+	width:100%;
+}
+
+td {
+	width:11%;
+	text-align: center;
+}
+
+#match1 table, #match2 table, #match3 table, #match4 table {
+	width:60%;
+	margin-left: 20%;
+}
+
+#match1 table td, #match2 table td, #match3 table td, #match4 table td {
+	width:20%;
+}
+
+div {
+	margin:10px 0px;
+}
+
+input {
+	margin:0px 20px;
+	height: 40px;
+	font-size: 1.2em;
+	width: 14em;
+}
+
+input[type=button] {
+	width:60%;
+	margin-left:20%;
+	margin-top:10px;
+	margin-bottom:10px;
+	cursor:pointer;
+}
+
+#plus, #moins {
+	cursor:pointer;
+}
+
+@media(max-width:1200px) {
+	fieldset {
+		width:80%;
+		margin-left: 10%;
+	}
+}

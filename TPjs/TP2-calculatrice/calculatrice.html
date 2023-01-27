@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculatrice JS</title>
+    <meta charset="utf8">
+    <link href="style.css" rel="stylesheet">
+    <script type="text/javascript" src="fonctions.js"></script>
+</head>
+<body>
+<div id="calculatrice">
+    <input id="ecran" class="ecran" type="text" disabled value=""></input>
+    <table>
+        <tr>
+            <td><input class="bouton" type="button" value="7" onclick="MAJecran('7');"></input></td>
+            <td><input class="bouton" type="button" value="8" onclick="MAJecran('8');"></input></td>
+            <td><input class="bouton" type="button" value="9" onclick="MAJecran('9');"></input></td>
+            <td><input class="bouton" type="button" value="+" onclick="MAJecran('+');"></input></td>
+        </tr>
+        <tr>
+            <td><input class="bouton" type="button" value="4" onclick="MAJecran('4');"></input></td>
+            <td><input class="bouton" type="button" value="5" onclick="MAJecran('5');"></input></td>
+            <td><input class="bouton" type="button" value="6" onclick="MAJecran('6');"></input></td>
+            <td><input class="bouton" type="button" value="-" onclick="MAJecran('-');"></input></td>
+        </tr>
+        <tr>
+            <td><input class="bouton" type="button" value="1" onclick="MAJecran('1');"></input></td>
+            <td><input class="bouton" type="button" value="2" onclick="MAJecran('2');"></input></td>
+            <td><input class="bouton" type="button" value="3" onclick="MAJecran('3');"></input></td>
+            <td><input class="bouton" type="button" value="x" onclick="MAJecran('*');"></input></td>
+        </tr>
+        <tr>
+            <td><input class="bouton" type="button" value="0" onclick="MAJecran('0');"></input></td>
+            <td><input class="bouton" type="button" value="," onclick="MAJecran('.');"></input></td>
+            <td><input class="bouton" type="button" value="<<" onclick="correction();"></input></td>
+            <td><input class="bouton" type="button" value="/" onclick="MAJecran('/');"></input></td>
+        </tr>
+        <tr>
+            <td><input class="bouton" type="button" value="(" onclick="MAJecran('(');"></input></td>
+            <td><input class="bouton" type="button" value=")" onclick="MAJecran(')');"></input></td>
+            <td><input class="bouton" type="button" value="C" onclick="effacer();"></input></td>
+            <td><input class="bouton" type="button" value="=" onclick="calculer();"></input></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

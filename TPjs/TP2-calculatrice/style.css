@@ -1,0 +1,26 @@
+.bouton {
+	width: 60px;
+	height: 40px;
+	font-size: 18px;
+}
+
+.ecran {
+	width: 247px;
+	height: 40px;
+	margin-left: 4px;
+	margin-bottom: 20px;
+	text-align: right;
+	font-size: 24px;
+}
+
+#calculatrice {
+	
+	width: 260px;
+	margin-left:auto;
+	margin-right: auto;
+	margin-top:10em;
+	padding:20px;
+	border:1px solid;
+	border-radius: 5px;
+	background-color: #D3D3D3;
+}

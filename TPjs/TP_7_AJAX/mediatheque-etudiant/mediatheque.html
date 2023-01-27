@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache"/>
+    <title>médiathèque JS</title>
+    <link rel="icon" href="img/book.ico"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="js/classes/livre.js" defer></script>
+    <script src="js/classes/adherent.js" defer></script>
+    <script src="js/classes/mediatheque.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+<h2 id="banniere">Médiathèque JavaScript</h2>
+<div id="boutons">
+    <input type="button" id="recharger" value="Recharger les données source">
+    <input type="button" id="sauvegarder" value="Enregistrer les données actuelles">
+</div>
+<div id="enregistrements">
+    <div id="ajoutAdherent">
+        <fieldset>
+            <legend>Nouvel adhérent</legend>
+            <div>
+                <input type="text" id="nomAdherent" placeholder="Nom...">
+                <input type="text" id="prenomAdherent" placeholder="Prénom...">
+                <input type="button" id="enregistrerAdherent" value="Enregistrer">
+            </div>
+        </fieldset>
+    </div>
+    <div id="ajoutLivre">
+        <fieldset>
+            <legend>Nouveau livre</legend>
+            <div>
+                <input type="text" id="titreLivre" placeholder="Titre...">
+                <input type="text" id="auteurLivre" placeholder="Auteur...">
+                <input type="button" id="enregistrerLivre" value="Enregistrer">
+            </div>
+        </fieldset>
+    </div>
+</div>
+<div id="listes">
+    <div id="adh">
+        <fieldset>
+            <legend>Adhérents</legend>
+            <div id="listeAdherents"></div>
+        </fieldset>
+    </div>
+    <div id="dispos">
+        <fieldset>
+            <legend>Livres disponibles</legend>
+            <div id="listeLivresDisponibles"></div>
+        </fieldset>
+    </div>
+    <div id="empr">
+        <fieldset>
+            <legend>Livres empruntés</legend>
+            <div id="listeLivresEmpruntes"></div>
+        </fieldset>
+    </div>
+</div>
+</body>
+</html>

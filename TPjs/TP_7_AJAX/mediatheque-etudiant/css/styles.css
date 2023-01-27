@@ -95,18 +95,24 @@ input {
     font-size : 1.2em;
 }
 
-#adh fieldset #listeAdherents div {
+#adh fieldset #listeAdherents div,
+#dispos fieldset #listeLivresDisponibles div,
+#empr fieldset #listeLivresEmpruntes div {
     display         : flex;
     flex-direction  : row;
     justify-content : space-between;
     margin          : 5px 0px;
 }
 
-#adh fieldset #listeAdherents li {
+#adh fieldset #listeAdherents li,
+#dispos fieldset #listeLivresDisponibles li,
+#empr fieldset #listeLivresEmpruntes li {
     width : 100%;
 }
 
-#adh fieldset #listeAdherents div button {
+#adh fieldset #listeAdherents div button,
+#dispos fieldset #listeLivresDisponibles div button,
+#empr fieldset #listeLivresEmpruntes div button {
     display : none;
     cursor  : pointer;
 }

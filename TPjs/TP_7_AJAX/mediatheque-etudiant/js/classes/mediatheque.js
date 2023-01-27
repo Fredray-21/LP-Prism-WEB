@@ -33,6 +33,13 @@ class Mediatheque {
         }
     }
 
+    supprimeLivre(livre) {
+        const index = this.tabLivres.indexOf(livre);
+        if (index > -1) {
+            this.tabLivres.splice(index, 1);
+        }
+    }
+
     prete(livre, adherent) {
         livre.numEmprunteur = adherent.numAdherent;
         livre.estEmprunte = 1;

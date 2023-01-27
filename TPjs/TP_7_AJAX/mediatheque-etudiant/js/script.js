@@ -128,12 +128,19 @@ function afficherLivres() {
     vide(divlisteLivresDispos);
     vide(divlisteLivresEmpruntes);
     M.tabLivres.forEach(livre => {
+        const div = document.createElement('div');
         let li = document.createElement('li');
         li.textContent = livre.numLivre + "-" + livre.titre + " (" + livre.auteur + ")";
+
+        const button = document.createElement('button');
+        button.textContent = "Supprimer";
+        button.dataset.numLivre = livre.numLivre;
+        div.appendChild(li);
+        div.appendChild(button);
         if (livre.estEmprunte == 0) {
-            divlisteLivresDispos.appendChild(li);
+            divlisteLivresDispos.appendChild(div);
         } else {
-            divlisteLivresEmpruntes.appendChild(li);
+            divlisteLivresEmpruntes.appendChild(div);
         }
     });
 
@@ -145,7 +152,6 @@ function eventsAdherents() {
     // qui permet d'afficher la liste d'emprunts de l'adhérent (méthode listeEmprunts())
 
     divlisteAdh.childNodes.forEach((div, i) => {
-
         div.addEventListener('mouseover', () => {
             div.lastChild.style.display = "block";
         });
@@ -186,8 +192,15 @@ function eventsLivresDispos() {
     // l'utilisateur que des changements sont intervenus.
     // Idéalement, prévoir de tester le numAdhérent entré pour qu'il soit valide.
 
-    divlisteLivresDispos.childNodes.forEach(li => {
-        li.addEventListener('click', () => {
+    divlisteLivresDispos.childNodes.forEach(div => {
+        div.addEventListener('mouseover', () => {
+            div.lastChild.style.display = "block";
+        });
+        div.addEventListener('mouseout', () => {
+            div.lastChild.style.display = "none";
+        });
+
+        div.firstChild.addEventListener('click', () => {
             let adherent = null;
             const numAdherent = prompt("A quel adhérent souhaitez-vous prêter ce livre ?\nIndiquez son numéro d'adhérent");
             adherent = M.getAdherentByNumAdherent(parseInt(numAdherent)) || null;
@@ -196,12 +209,26 @@ function eventsLivresDispos() {
                 return;
             }
 
-            const numLivre = parseInt(li.textContent.split("-")[0]);
+            const numLivre = parseInt(div.firstChild.textContent.split("-")[0]);
             const livre = M.getLivreByNumLivre(numLivre);
             M.prete(livre, adherent)
             MAJ();
             alert("Le livre a bien été prêté à l'adhréent N°" + numAdherent + "");
             boutonSauvegarder.style.backgroundColor = "red";
+        });
+
+        div.lastChild.addEventListener('click', () => { // pour chaque bouton de suppression de livre
+            const numLivre = parseInt(div.lastChild.dataset.numLivre);
+            const livre = M.getLivreByNumLivre(numLivre);
+            if (confirm("Voulez-vous vraiment supprimer le livre " + livre.titre + " ?")) {
+                // on supprime le livre de la liste des livres
+                // et on met à jour l'affichage
+                M.recupere(livre);
+                M.supprimeLivre(livre);
+                MAJ();
+                alert(`Le livre ${livre.titre} a bien été supprimé`);
+                boutonSauvegarder.style.backgroundColor = "red";
+            }
         });
     });
 }
@@ -213,9 +240,16 @@ function eventsLivresEmpruntes() {
     // et qu'on met à jour la médiathèque.
     // Ne pas oublier le changement de style du bouton de sauvegarde.
 
-    divlisteLivresEmpruntes.childNodes.forEach(li => {
-        li.addEventListener('click', () => {
-            const numLivre = parseInt(li.textContent.split("-")[0]);
+    divlisteLivresEmpruntes.childNodes.forEach(div => {
+        div.addEventListener('mouseover', () => {
+            div.lastChild.style.display = "block";
+        });
+        div.addEventListener('mouseout', () => {
+            div.lastChild.style.display = "none";
+        });
+
+        div.firstChild.addEventListener('click', () => {
+            const numLivre = parseInt(div.firstChild.textContent.split("-")[0]);
             const livre = M.getLivreByNumLivre(numLivre);
             const adherent = M.getAdherentByNumAdherent(livre.numEmprunteur);
             if (confirm(`Livre prêté à ${adherent.nom} ${adherent.prenom}\nVoulez-vous retourner ce livre ?`)) {
@@ -225,8 +259,23 @@ function eventsLivresEmpruntes() {
                 boutonSauvegarder.style.backgroundColor = "red";
             }
         });
+
+        div.lastChild.addEventListener('click', () => { // pour chaque bouton de suppression de livre
+            const numLivre = parseInt(div.lastChild.dataset.numLivre);
+            const livre = M.getLivreByNumLivre(numLivre);
+            if (confirm("Voulez-vous vraiment supprimer le livre " + livre.titre + " ?")) {
+                // on supprime le livre de la liste des livres
+                // et on met à jour l'affichage
+                M.recupere(livre);
+                M.supprimeLivre(livre);
+                MAJ();
+                alert(`Le livre ${livre.titre} a bien été supprimé`);
+                boutonSauvegarder.style.backgroundColor = "red";
+            }
+        });
     });
 }
+
 
 function MAJ() {
     // on affiche les adhérents, on affiche les livres,

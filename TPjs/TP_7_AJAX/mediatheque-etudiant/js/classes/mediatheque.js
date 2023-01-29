@@ -40,6 +40,21 @@ class Mediatheque {
         }
     }
 
+    modifierAdherent(numADH, nom, prenom) {
+        const adherent = this.getAdherentByNumAdherent(parseInt(numADH));
+        console.log(adherent);
+        adherent.nom = nom;
+        adherent.prenom = prenom;
+    }
+
+    modifierLivre(numL, titre, auteur) {
+        const livre = this.getLivreByNumLivre(parseInt(numL));
+        console.log(livre);
+        livre.titre = titre;
+        livre.auteur = auteur;
+    }
+
+
     prete(livre, adherent) {
         livre.numEmprunteur = adherent.numAdherent;
         livre.estEmprunte = 1;
@@ -47,6 +62,7 @@ class Mediatheque {
     }
 
     recupere(livre) {
+        if (livre.estEmprunte == "0") return;
         const adherent = this.getAdherentByNumAdherent(livre.numEmprunteur);
         livre.numEmprunteur = null;
         livre.estEmprunte = "0";

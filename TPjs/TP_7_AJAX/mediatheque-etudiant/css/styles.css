@@ -16,7 +16,13 @@ body * {
     margin-top      : 2em;
 }
 
-#ajoutAdherent, #ajoutLivre {
+#ajoutLivre {
+    width          : 50%;
+    display        : none;
+    flex-direction : column
+}
+
+#ajoutAdherent {
     width          : 50%;
     display        : flex;
     flex-direction : column;
@@ -37,7 +43,8 @@ body * {
 }
 
 #adh, #dispos, #empr {
-    width : 33.3%;
+    /*width : 33.3%;*/
+    width : 50%;
 }
 
 #adh fieldset, #dispos fieldset, #empr fieldset {
@@ -107,12 +114,21 @@ input {
 #adh fieldset #listeAdherents li,
 #dispos fieldset #listeLivresDisponibles li,
 #empr fieldset #listeLivresEmpruntes li {
-    width : 100%;
+    width : 80%;
 }
 
-#adh fieldset #listeAdherents div button,
-#dispos fieldset #listeLivresDisponibles div button,
-#empr fieldset #listeLivresEmpruntes div button {
+#adh fieldset #listeAdherents div div,
+#dispos fieldset #listeLivresDisponibles div div,
+#empr fieldset #listeLivresEmpruntes div div {
     display : none;
     cursor  : pointer;
+}
+
+#listes > #dispos,
+#listes > #empr {
+    display : none;
+}
+
+#menuADH {
+    text-decoration : underline;
 }

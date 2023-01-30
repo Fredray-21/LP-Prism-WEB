@@ -29,5 +29,4 @@ class Adherent {
         });
         return liste;
     }
-
 }

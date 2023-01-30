@@ -27,6 +27,8 @@ let divLivresEmpruntes = document.getElementById('empr');
 let divAjoutAdherent = document.getElementById('ajoutAdherent');
 let divAjoutLivre = document.getElementById('ajoutLivre');
 
+let inpPrint = document.getElementById("print");
+
 // création de la médiathèque
 let M = new Mediatheque();
 
@@ -107,7 +109,7 @@ function sauvegardeMySQL() {
 
 
 // méthodes d'affichage et mise à jour de l'interface
-function afficherAdherents() {
+function afficherAdherents(divlisteAdh) {
     // on commence par vider la div des adhérents
     // ensuite, on la reconstruit élément par élément
     // en insérant entre parenthèses le nombre d'emprunts
@@ -129,6 +131,7 @@ function afficherAdherents() {
         div.appendChild(li);
         div.appendChild(divButton);
         divlisteAdh.appendChild(div);
+        divlisteAdh.parentElement.querySelector("legend").innerHTML = "Liste des adhérents (" + M.tabAdherents.length + ")";
     });
 }
 
@@ -154,6 +157,7 @@ function afficherLivres() {
         } else {
             divlisteLivresEmpruntes.appendChild(div);
         }
+        divlisteLivresEmpruntes.parentElement.querySelector("legend").innerHTML = "Livres empruntés";
     });
 }
 
@@ -269,19 +273,44 @@ function eventsLivresDispos() {
 
         div.firstChild.addEventListener('click', () => {
             let adherent = null;
-            const numAdherent = prompt("A quel adhérent souhaitez-vous prêter ce livre ?\nIndiquez son numéro d'adhérent");
+            const numAdherent = prompt("A quel adhérent souhaitez-vous prêter ce livre ?\nIndiquez son numéro d'adhérent\n\n" + M.listeAdherent() + "");
             adherent = M.getAdherentByNumAdherent(parseInt(numAdherent)) || null;
             if (adherent === null) {
                 alert("L'adhérent n'existe pas");
                 return;
             }
-
             const numLivre = parseInt(div.firstChild.textContent.split("-")[0]);
             const livre = M.getLivreByNumLivre(numLivre);
             M.prete(livre, adherent)
             MAJ();
             alert("Le livre a bien été prêté à l'adhréent N°" + numAdherent + "");
             boutonSauvegarder.style.backgroundColor = "red";
+        });
+
+
+        div.draggable = true;
+        div.addEventListener("dragstart", e => {
+            afficherAdherents(divlisteLivresEmpruntes);
+            const listeAdherents = document.querySelector("#empr  #listeLivresEmpruntes");
+            const numLivre = parseInt(div.lastChild.dataset.numLivre);
+            listeAdherents.childNodes.forEach(div => {
+                div.draggable = true;
+                div.addEventListener("dragover", e => {
+                    e.preventDefault();
+                });
+                div.addEventListener("drop", e => {
+                    e.preventDefault();
+                    const numAdherent = parseInt(div.lastChild.dataset.numAdherent);
+                    const adherent = M.getAdherentByNumAdherent(numAdherent);
+                    const livre = M.getLivreByNumLivre(numLivre);
+                    if (confirm("Voulez-vous vraiment prêter le livre \"" + livre.titre + "\" \nà l'adhérent " + adherent.nom + " " + adherent.prenom + " ?")) {
+                        M.prete(livre, adherent);
+                        MAJ();
+                        alert("Le livre a bien été prêté à l'adhréent N°" + numAdherent + "");
+                        boutonSauvegarder.style.backgroundColor = "red";
+                    }
+                });
+            });
         });
         eventsButtonLivre(div);
     });
@@ -356,7 +385,7 @@ function MAJ() {
     // on affiche les adhérents, on affiche les livres,
     // et on lance les fonctions de gestion des divers événements click
     afficherLivres();
-    afficherAdherents();
+    afficherAdherents(divlisteAdh);
     eventsAdherents();
     eventsLivresDispos();
     eventsLivresEmpruntes();
@@ -466,5 +495,11 @@ inpMenuLIVRE.addEventListener("click", () => {
     inpMenuADH.style.textDecoration = "none";
     divAjoutAdherent.style.display = "none";
     divAjoutLivre.style.display = "flex";
+});
+
+inpPrint.addEventListener("click", () => {
+    // on imprime la médiathèque
+    console.log(M);
+    window.print();
 });
 

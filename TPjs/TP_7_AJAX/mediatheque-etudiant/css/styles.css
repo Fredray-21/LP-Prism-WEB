@@ -109,6 +109,7 @@ input {
     flex-direction  : row;
     justify-content : space-between;
     margin          : 5px 0px;
+    user-select     : none;
 }
 
 #adh fieldset #listeAdherents li,

@@ -311,6 +311,10 @@ function eventsLivresDispos() {
                     }
                 });
             });
+            div.addEventListener("dragend", e => {
+                e.preventDefault();
+                MAJ();
+            });
         });
         eventsButtonLivre(div);
     });

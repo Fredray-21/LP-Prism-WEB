@@ -89,12 +89,4 @@ class Mediatheque {
             }
         });
     }
-
-    listeAdherent() {
-        let liste = "";
-        this.tabAdherents.forEach(adherent => {
-            liste += adherent.numAdherent + "- " + adherent.nom + " " + adherent.prenom + "\n";
-        });
-        return liste;
-    }
 }

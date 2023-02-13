@@ -1,140 +1,219 @@
 body {
-    width   : 90%;
-    margin  : 1em auto 0 auto;
-    padding : 0px 20px 20px 20px;
-    border  : solid 2px grey;
+    width: 90%;
 }
 
 body * {
-    font-family : Consolas;
+    font-family: Consolas;
 }
 
-#enregistrements, #listes {
-    display         : flex;
-    flex-direction  : row;
-    justify-content : flex-start;
-    margin-top      : 2em;
+html {
+    background: url(../img/background.jpg) no-repeat center center fixed;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+#enregistrements,
+#listes {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 2em;
 }
 
 #ajoutLivre {
-    width          : 50%;
-    display        : none;
-    flex-direction : column
+    width: 50%;
+    display: none;
+    flex-direction: column
 }
 
 #ajoutAdherent {
-    width          : 50%;
-    display        : flex;
-    flex-direction : column;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
 }
 
-#ajoutLivre div, #ajoutAdherent div {
-    display         : flex;
-    justify-content : space-around;
-    margin-bottom   : 10px;
+#ajoutLivre div,
+#ajoutAdherent div {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
 }
 
-#ajoutLivre div input[type="text"], #ajoutAdherent div input[type="text"] {
-    width : 35%;
+#ajoutLivre div input[type="text"],
+#ajoutAdherent div input[type="text"] {
+    width: 35%;
 }
 
-#ajoutLivre div input[type="button"], #ajoutAdherent div input[type="button"] {
-    width : 30%;
+#ajoutLivre div input[type="button"],
+#ajoutAdherent div input[type="button"] {
+    width: 30%;
 }
 
-#adh, #dispos, #empr {
+#adh,
+#dispos,
+#empr {
     /*width : 33.3%;*/
-    width : 50%;
+    width: 50%;
 }
 
-#adh fieldset, #dispos fieldset, #empr fieldset {
-    min-height : 20em;
+#adh fieldset,
+#dispos fieldset,
+#empr fieldset {
+    min-height: 20em;
 }
 
 #boutons {
-    display         : flex;
-    flex-direction  : row;
-    justify-content : center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
 }
 
-#boutons > input {
-    width : 33%;
+#boutons>input, #enregistrerAdherent {
+    width: 33%;
+    background-color: #E1E1E1;
+    border: 2px solid #805a43;
+    border-radius: 4px;
+    font-size: 1.2em;
+    font-style: italic;
+    font-weight: bold;
+    color: black;
+    box-shadow: 2px 2px 2px #805a43;
+}
+
+
+#boutons>input:hover, #enregistrerAdherent:hover {
+    background-color: #805a43;
+    color: white;
 }
 
 input[type="button"] {
-    cursor           : pointer;
-    background-color : #E1E1E1;
-    font-style       : normal;
-    font-weight      : normal;
-    color            : black;
+    cursor: pointer;
+    background-color: #E1E1E1;
+    font-style: normal;
+    font-weight: normal;
+    color: black;
 }
 
 legend {
-    font-size : 1.5em;
+    font-size: 1.5em;
 }
 
-h2 {
-    font-size        : 2em;
-    color            : white;
-    background-color : grey;
-    border-radius    : 4px;
-    padding          : 10px;
-    box-shadow       : 4px 4px 4px black;
-    text-align       : center;
+#banniere {
+    font-size: 2em;
+    color: white;
+    background-color: #A17356;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 4px 4px 4px #805a43;
+    text-align: center;
+    margin-bottom: 2em;
 }
 
 ul {
-    padding-left : 20px;
+    padding-left: 20px;
 }
 
-li {
-    cursor           : pointer;
-    background-color : white;
-    line-height      : 1.5em;
+#listes li {
+    cursor: pointer;
+    background: none;
+    line-height: 1.5em;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #805a43;
 }
 
-li:hover {
-    background-color : lightgrey;
+#listes li:hover {
+    font-weight: bold;
+    padding-left: 10px;
 }
 
 input {
-    padding   : 5px;
-    font-size : 1.2em;
+    padding: 5px;
+    font-size: 1.2em;
 }
 
 #adh fieldset #listeAdherents div,
 #dispos fieldset #listeLivresDisponibles div,
 #empr fieldset #listeLivresEmpruntes div {
-    display         : flex;
-    flex-direction  : row;
-    justify-content : space-between;
-    margin          : 5px 0px;
-    user-select     : none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px 0px;
+    user-select: none;
 }
 
 #adh fieldset #listeAdherents li,
 #dispos fieldset #listeLivresDisponibles li,
 #empr fieldset #listeLivresEmpruntes li {
-    width : 80%;
+    width: 70%;
 }
 
 #adh fieldset #listeAdherents div div,
 #dispos fieldset #listeLivresDisponibles div div,
 #empr fieldset #listeLivresEmpruntes div div {
-    display : none;
-    cursor  : pointer;
+    display: none;
+    cursor: pointer;
 }
 
-#listes > #dispos,
-#listes > #empr {
-    display : none;
+#listes>#dispos,
+#listes>#empr {
+    display: none;
 }
 
 #menuADH {
-    text-decoration : underline;
+    text-decoration: underline;
+}
+
+#menuADH:not(.active),
+#menuLIVRE:not(.active) {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #EED59E;
+    box-shadow: 4px 4px 4px #805a43;
+}
+
+#menuADH:hover,
+#menuLIVRE:hover {
+    background-color: #805a43;
+    color: white;
+}
+
+
+#menu .active {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 4px 4px 4px #805a43;
+    background-color: #805a43;
+    color: white;
 }
 
 
 #modal_menu {
-    padding : 0;
+    padding: 0;
 }
+
+#menu>fieldset {
+    border-radius: 5px;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+#enregistrements fieldset,
+#listes fieldset {
+    border: none;
+}
+
+#modal {
+    background-color: #EED59E;
+
+}
+
+ 

@@ -119,11 +119,21 @@ function afficherAdherents(divlisteAdh) {
     M.tabAdherents.forEach(adherent => {
         const div = document.createElement('div');
         let li = document.createElement('li');
-        li.textContent = adherent.nom + " " + adherent.prenom;
+        const img = document.createElement('img');
+        img.src = "./img/icon_person.svg";
+        img.alt = "icône d'un homme";
 
+        li.textContent = adherent.nom + " " + adherent.prenom;
         if (adherent.tabEmprunts.length > 0) {
-            li.textContent += " (" + adherent.tabEmprunts.length + " emprunt)";
+            const span = document.createElement('span');
+            span.textContent = " (" + adherent.tabEmprunts.length + " emprunt)";
+            span.prepend(img);
+            li.prepend(span);
+        }else{
+            li.prepend(img);
         }
+        
+
 
         divButton = createButtonEvent();
         div.appendChild(li);
@@ -144,7 +154,11 @@ function afficherLivres() {
     M.tabLivres.forEach(livre => {
         const div = document.createElement('div');
         let li = document.createElement('li');
+        const img = document.createElement('img');
+        img.src = "./img/icon_book.svg";
+        img.alt = "icône d'un homme";
         li.textContent = livre.titre + " (" + livre.auteur + ")";
+        li.prepend(img);
 
         divButton = createButtonEvent();
         divButton.dataset.numLivre = livre.numLivre;
@@ -157,7 +171,8 @@ function afficherLivres() {
             divlisteLivresEmpruntes.appendChild(div);
         }
         div.dataset.numLivre = livre.numLivre;
-        divlisteLivresEmpruntes.parentElement.querySelector("legend").innerHTML = "Livres empruntés";
+        divlisteLivresDispos.parentElement.querySelector("legend").innerHTML = "Livres disponibles " + "(" + M.tabLivres.filter(livre => livre.estEmprunte == 0).length + ")";
+        divlisteLivresEmpruntes.parentElement.querySelector("legend").innerHTML = "Livres empruntés" + "(" + M.tabLivres.filter(livre => livre.estEmprunte == 1).length + ")";
     });
 }
 
@@ -218,20 +233,20 @@ function eventsAdherents() {
             const nameString = M.tabAdherents[i].nom + " " + M.tabAdherents[i].prenom;
             const nbEmprunts = M.tabAdherents[i].tabEmprunts.length;
             if (nbEmprunts === 0) {
-                showModal(nameString + " n'a aucun emprunt en ce moment", "alert");
+                showModal("<b>"+nameString + "</b> n'a aucun emprunt en ce moment", "alert");
                 return;
             }
-            showModal("Liste des emprunts de " + nameString, "afficherListe", null, null, M.tabAdherents[i].tabEmprunts);
+            showModal("Liste des emprunts de <b>" + nameString+"</b>", "afficherListe", null, null, M.tabAdherents[i].tabEmprunts);
 
         });
 
         div.lastChild.firstChild.addEventListener('click', () => { // pour chaque bouton de suppression d'adhérent
             const adherent = M.getAdherentByNumAdherent(parseInt(div.dataset.numAdherent));
 
-            showModal("Voulez-vous vraiment modifier l'adhérent " + adherent.nom + " " + adherent.prenom + " ?", "confirm", () => {
+            showModal("Voulez-vous vraiment modifier l'adhérent <b>" + adherent.nom + " " + adherent.prenom + "</b> ?", "confirm", () => {
                 // on met dans la div de modification l'adhérent de la liste des adhérents
                 // et on met à jour l'affichage
-                divAjoutAdherent.querySelector("legend").innerHTML = "Modification de l'adherent N°" + adherent.numAdherent;
+                divAjoutAdherent.querySelector("legend").innerHTML = "Modification de l'adherent";
                 createButtonCancel(divAjoutAdherent);
 
                 inpNomAdh.value = adherent.nom;
@@ -245,12 +260,12 @@ function eventsAdherents() {
         div.lastChild.lastChild.addEventListener('click', () => { // pour chaque bouton de suppression d'adhérent
             const adherent = M.getAdherentByNumAdherent(parseInt(div.dataset.numAdherent));
 
-            showModal("Voulez-vous vraiment supprimer l'adhérent " + adherent.nom + " " + adherent.prenom + " ?", "confirm", () => {
+            showModal("Voulez-vous vraiment supprimer l'adhérent <b>" + adherent.nom + " " + adherent.prenom + "</b> ?", "confirm", () => {
                 // on supprime l'adhérent de la liste des adhérents
                 // et on met à jour l'affichage
                 M.supprimeAdherent(adherent);
                 MAJ();
-                showModal(`L'adhérent ${adherent.nom} ${adherent.prenom} a bien été supprimé`, "alert");
+                showModal(`L'adhérent <b>${adherent.nom} ${adherent.prenom}</b> a bien été supprimé`, "alert");
                 boutonSauvegarder.style.backgroundColor = "red";
             });
         });
@@ -284,8 +299,9 @@ function eventsLivresDispos() {
                     const numLivre = parseInt(div.dataset.numLivre);
                     const livre = M.getLivreByNumLivre(numLivre);
                     M.prete(livre, adherent)
+                    boutonSauvegarder.style.backgroundColor = "red";
                     MAJ();
-                    showModal(`Le livre <b>${livre.titre}</b> a bien été prêté à <b>${adherent.nom} ${adherent.prenom}<b>`, "alert");
+                    showModal(`Le livre <b>${livre.titre}</b> a bien été prêté à <b>${adherent.nom} ${adherent.prenom}</b>`, "alert");
                 }
             });
         });
@@ -306,10 +322,10 @@ function eventsLivresDispos() {
                     const adherent = M.getAdherentByNumAdherent(numAdherent);
                     const livre = M.getLivreByNumLivre(numLivre);
 
-                    showModal("Voulez-vous vraiment prêter le livre <br>\"" + livre.titre + "\"<br>à l'adhérent " + adherent.nom + " " + adherent.prenom + " ?", "confirm", () => {
+                    showModal("Voulez-vous vraiment prêter le livre <br>\"" + livre.titre + "\"<br>à l'adhérent <b>" + adherent.nom + " " + adherent.prenom + "</b> ?", "confirm", () => {
                         M.prete(livre, adherent);
                         MAJ();
-                        showModal(`Le livre <b>${livre.titre}</b> a bien été prêté à <b>${adherent.nom} ${adherent.prenom}<b>`, "alert");
+                        showModal(`Le livre <b>${livre.titre}</b> a bien été prêté à <b>${adherent.nom} ${adherent.prenom}</b>`, "alert");
                         boutonSauvegarder.style.backgroundColor = "red";
                     });
                 });
@@ -341,7 +357,7 @@ function eventsLivresEmpruntes() {
         div.firstChild.addEventListener('click', () => {
             const numLivre = parseInt(div.dataset.numLivre);
             const livre = M.getLivreByNumLivre(numLivre);
-            showModal("Voulez-vous vraiment rendre le livre \"" + livre.titre + "\" ?", "confirm", () => {
+            showModal("Voulez-vous vraiment rendre le livre <b>\"" + livre.titre + "\"</b> ?", "confirm", () => {
                 M.recupere(livre);
                 MAJ();
                 showModal("Le livre a bien été rendu", "alert");
@@ -356,8 +372,8 @@ function eventsButtonLivre(div) {
     div.lastChild.firstChild.addEventListener('click', () => { // pour chaque bouton de modification de livre
         const numLivre = parseInt(div.lastChild.dataset.numLivre);
         const livre = M.getLivreByNumLivre(numLivre);
-        showModal("Voulez-vous vraiment modifier le livre " + livre.titre + " ?", "confirm", () => {
-            divAjoutLivre.querySelector("legend").innerHTML = "Modification du livre N°" + livre.numLivre;
+        showModal("Voulez-vous vraiment modifier le livre <b>" + livre.titre + "</b> ?", "confirm", () => {
+            divAjoutLivre.querySelector("legend").innerHTML = "Modification du livre";
             createButtonCancel(divAjoutLivre);
 
             inpTitre.value = livre.titre;
@@ -371,11 +387,11 @@ function eventsButtonLivre(div) {
         const numLivre = parseInt(div.lastChild.dataset.numLivre);
         const livre = M.getLivreByNumLivre(numLivre);
 
-        showModal("Voulez-vous vraiment supprimer le livre " + livre.titre + " ?", "confirm", () => {
+        showModal("Voulez-vous vraiment supprimer le livre <b>" + livre.titre + "</b> ?", "confirm", () => {
             M.recupere(livre);
             M.supprimeLivre(livre);
             MAJ();
-            showModal(`Le livre ${livre.titre} a bien été supprimé`, "alert");
+            showModal(`Le livre <b>${livre.titre}</b> a bien été supprimé`, "alert");
             boutonSauvegarder.style.backgroundColor = "red";
         });
     });
@@ -432,7 +448,7 @@ enrLivre.addEventListener('click', () => {
             inpAuteur.value = "";
             enrLivre.value = "Enregistrer";
             divAjoutLivre.querySelector("legend").innerHTML = "Nouveau livre";
-            showModal(`Le livre N° ${inpNumLivre.value} a bien été modifié !`, "alert");
+            showModal(`Le livre <b>${inpTitre.value}</b> a bien été modifié !`, "alert");
 
             document.getElementById("buttonCancel").remove();
         } else {
@@ -467,8 +483,7 @@ enrAdh.addEventListener('click', () => {
             inpPreAdh.value = "";
             enrAdh.value = "Enregistrer";
             divAjoutAdherent.querySelector("legend").innerHTML = "Nouvel adhérent";
-            showModal(`L'adhérent N° ${inpNumAdherent.value} a bien été modifié !`, "alert");
-
+            showModal(`L'adhérent <b>${inpNomAdh.value}</b> a bien été modifié !`, "alert");
             document.getElementById("buttonCancel").remove();
         } else {
             const NewNumAdh = M.tabAdherents.reduce((acc, adherent) => adherent.numAdherent > acc ? adherent.numAdherent : acc, 0) + 1;
@@ -488,6 +503,8 @@ inpMenuADH.addEventListener("click", () => {
     divLivresEmpruntes.style.display = "none";
     divAdh.style.display = "block";
     inpMenuADH.style.textDecoration = "underline";
+    inpMenuADH.classList.toggle("active");
+    inpMenuLIVRE.classList.toggle("active");
     inpMenuLIVRE.style.textDecoration = "none";
     divAjoutLivre.style.display = "none";
     divAjoutAdherent.style.display = "flex";
@@ -498,6 +515,8 @@ inpMenuLIVRE.addEventListener("click", () => {
     divLivresDispos.style.display = "block";
     divLivresEmpruntes.style.display = "block";
     inpMenuLIVRE.style.textDecoration = "underline";
+    inpMenuADH.classList.toggle("active");
+    inpMenuLIVRE.classList.toggle("active");
     inpMenuADH.style.textDecoration = "none";
     divAjoutAdherent.style.display = "none";
     divAjoutLivre.style.display = "flex";
@@ -568,7 +587,7 @@ function showModal(message, type, confirmCallback, cancelCallback, listes) {
         ul.id = "ulListe";
         listes.forEach(livre => {
             const li = document.createElement("li");
-            li.innerHTML = livre.titre;
+            li.innerHTML = livre.titre + " - (" + livre.auteur+")";
             ul.appendChild(li);
         });
         modal.querySelector("label").appendChild(ul);
